@@ -10,6 +10,11 @@ package rpm
 
 // #cgo LDFLAGS: -lrpm
 // #include <rpm/rpmlib.h>
+// #ifndef RPMTAG_HDRID
+// #define RPMTAG_HDRID 	RPMTAG_SHA1HEADER
+// #define RPMTAG_PKGID 	RPMTAG_SIGMD5
+// #define RPMTAG_SOURCEPKGID	RPMTAG_SOURCESIGMD5
+// #endif
 import "C"
 
 
@@ -154,6 +159,7 @@ const (
 	RPMTAG_FILEDEPENDSN      = RpmTag(C.RPMTAG_FILEDEPENDSN)      // i[]
 	RPMTAG_DEPENDSDICT       = RpmTag(C.RPMTAG_DEPENDSDICT)       // i[]
 	RPMTAG_SOURCEPKGID       = RpmTag(C.RPMTAG_SOURCEPKGID)       // x
+	RPMTAG_SOURCESIGMD5      = RpmTag(C.RPMTAG_SOURCEPKGID)       // x
 	RPMTAG_FSCONTEXTS        = RpmTag(C.RPMTAG_FSCONTEXTS)        // s[] extension
 	RPMTAG_RECONTEXTS        = RpmTag(C.RPMTAG_RECONTEXTS)        // s[] extension
 	// s[] selinux *.te policy file
